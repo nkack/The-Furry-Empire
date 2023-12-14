@@ -28,6 +28,12 @@ class Greetings(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, message):
+        if message.author == self.client.user:
+            return
+        
+        if ("happy") in message.content:
+            emoji = '😁'
+            await message.add_reaction(emoji)
         content = message.content.lower()
         greetings = {"hello": "Hewwo cutie!",
                     "hi": "Hiiii cutie",
@@ -41,6 +47,10 @@ class Greetings(commands.Cog):
             else:
                 pass
         await self.client.process_commands(message)
+        
+
+
+    
 
 async def setup(client):
     await client.add_cog(Greetings(client))
