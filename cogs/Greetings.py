@@ -22,7 +22,7 @@ class Greetings(commands.Cog):
     async def on_member_join(self, member):
         channel = await self.client.fetch_channel(self.WELCOMECHANNEL)
         if channel is not None:
-            await channel.send(f"Hello, {member.mention}!")
+            await channel.send(f"Welcome to The Furry Empire, {member.mention}! We are happy to see you, and hope that you'll enjoy your stay. 🩷 \n \n Before you talk, please check out the <#1175352660141019177> to make sure you follow our set rules for keeping an open and friendly environment.")
         else:
             print("Couldn't welcome new member. Reason: Welcomechannel not set")
 
