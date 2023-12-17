@@ -14,6 +14,7 @@ class Moderation(commands.Cog):
         await member.kick(reason=reason)
         await ctx.send(f'User {member} has been kicked')
 
+
     @kick.error
     async def kick_error(ctx, error):
         if isinstance(error, commands.MissingPermissions):

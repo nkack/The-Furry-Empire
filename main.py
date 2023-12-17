@@ -3,7 +3,7 @@ from discord.ext import commands
 import os
 
 from apikeys import *
-from dcids import *
+from Channels import *
 
 
 intents = discord.Intents.default()
