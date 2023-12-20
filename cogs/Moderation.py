@@ -1,8 +1,8 @@
-import discord
-from discord.ext import commands
-from discord import Member
-from discord.ext.commands import has_permissions, MissingPermissions
-from discord.utils import get
+import nextcord
+from nextcord.ext import commands
+from nextcord import Member
+from nextcord.ext.commands import has_permissions, MissingPermissions
+from nextcord.utils import get
 
 
 class Moderation(commands.Cog):
@@ -12,14 +12,14 @@ class Moderation(commands.Cog):
 
     @commands.command()
     @commands.has_permissions(kick_members=True)
-    async def kick(self, ctx, member: discord.Member, *, reason=None):
+    async def kick(self, ctx, member: nextcord.Member, *, reason=None):
         await member.kick(reason=reason)
         await ctx.send(f'User {member} has been kicked')
 
     # Add Role Commands
     @commands.command(pass_context = True)
     @commands.has_permissions(manage_roles = True)
-    async def addRole(self, ctx, user : discord.Member, *, role : discord.role):
+    async def addRole(self, ctx, user : nextcord.Member, *, role : nextcord.role):
 
         if role in user.roles:
             await ctx.send("This user already has the role")
@@ -35,7 +35,7 @@ class Moderation(commands.Cog):
 
     @commands.command(pass_context = True)
     @commands.has_permissions(manage_roles = True)
-    async def removeRole(self, ctx, user : discord.Member, *, role : discord.role):
+    async def removeRole(self, ctx, user : nextcord.Member, *, role : nextcord.role):
 
         if role in user.roles:
             await user.remove_roles(role)
@@ -59,7 +59,7 @@ class Moderation(commands.Cog):
 
     @commands.command()
     @commands.has_permissions(ban_members=True)
-    async def ban(self, ctx, member: discord.Member, *, reason=None):
+    async def ban(self, ctx, member: nextcord.Member, *, reason=None):
         await member.ban(reason=reason)
         await ctx.send(f'User {member} has been banned')
 

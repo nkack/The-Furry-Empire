@@ -1,6 +1,6 @@
-import discord
-from discord.ext import commands
-from discord import FFmpegPCMAudio
+import nextcord
+from nextcord.ext import commands
+from nextcord import FFmpegPCMAudio
 
 class VoiceChat(commands.Cog):
 
@@ -44,7 +44,7 @@ class VoiceChat(commands.Cog):
     # VC Pause Audio Command
     @commands.command(pass_context = True)
     async def pause(self, ctx):
-        voice = discord.utils.get(self.client.voice_clients,guild = ctx.guild)
+        voice = nextcord.utils.get(self.client.voice_clients,guild = ctx.guild)
         if voice.is_playing():
             voice.pause()
         else: 
@@ -54,7 +54,7 @@ class VoiceChat(commands.Cog):
     # VC Resume Audio Command
     @commands.command(pass_context = True)
     async def resume(self, ctx):
-        voice = discord.utils.get(self.client.voice_clients,guild = ctx.guild)
+        voice = nextcord.utils.get(self.client.voice_clients,guild = ctx.guild)
         if voice.is_paused():
             voice.resume()
         else:
@@ -64,7 +64,7 @@ class VoiceChat(commands.Cog):
     # VC Stop Audio Command
     @commands.command(pass_context = True)
     async def stop(self, ctx):
-        voice = discord.utils.get(self.client.voice_clients,guild = ctx.guild)
+        voice = nextcord.utils.get(self.client.voice_clients,guild = ctx.guild)
         voice.stop()
 
 

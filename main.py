@@ -1,17 +1,12 @@
-import discord
-from discord.ext import commands
+import nextcord
+from nextcord.ext import commands
 import os
 
 from apikeys import *
 from Channels import *
 
 
-intents = discord.Intents.default()
-intents.all()
-intents.reactions = True
-intents.members = True
-intents.message_content = True
-intents.members = True
+intents = nextcord.Intents.all()
 client = commands.Bot(command_prefix = '!', intents=intents)
 
 
@@ -28,8 +23,8 @@ async def load_cogs():
 
 @client.event
 async def on_ready():
-    activity = discord.Activity(type = discord.ActivityType.watching, name='Cute Furries on DC')
-    await client.change_presence(status=discord.Status.online, activity=activity)
+    activity = nextcord.Activity(type = nextcord.ActivityType.watching, name='Cute Furries on DC')
+    await client.change_presence(status=nextcord.Status.online, activity=activity)
     await load_cogs()
 
     print("The bot is now ready for use!")
