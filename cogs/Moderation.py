@@ -27,6 +27,30 @@ class Moderation(commands.Cog):
             await ctx.send(f"Added {role} to {user.mention}")
 
 
+    @addRole.error
+    async def role_error(self, ctx, error):
+        if isinstance(error, commands.MissingPermissions):
+            await ctx.send("You don't have permission to use this command!")
+
+
+    @commands.command(pass_context = True)
+    @commands.has_permissions(manage_roles = True)
+    async def removeRole(self, ctx, user : discord.Member, *, role : discord.role):
+
+        if role in user.roles:
+            await user.remove_roles(role)
+            await ctx.send(f"Removed {role} from {user.mention}")
+        else:
+            
+            await ctx.send(f"{user.mention} does not have the role {role}")
+
+    @removeRole.error
+    async def removeRole_error(self, ctx, error):
+        if isinstance(error, commands.MissingPermissions):
+            await ctx.send("You don't have permission to use this command!")
+
+
+
     @kick.error
     async def kick_error(ctx, error):
         if isinstance(error, commands.MissingPermissions):
