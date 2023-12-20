@@ -22,6 +22,9 @@ class Moderation(commands.Cog):
 
         if role in user.roles:
             await ctx.send("This user already has the role")
+        else:
+            await user.add_roles(role)
+            await ctx.send(f"Added {role} to {user.mention}")
 
 
     @kick.error
