@@ -16,6 +16,7 @@ class Moderation(commands.Cog):
         await member.kick(reason=reason)
         await ctx.send(f'User {member} has been kicked')
 
+    # Add Role Commands
     @commands.command(pass_context = True)
     @commands.has_permissions(manage_roles = True)
     async def addRole(self, ctx, user : discord.Member, *, role : discord.role):
@@ -25,7 +26,6 @@ class Moderation(commands.Cog):
         else:
             await user.add_roles(role)
             await ctx.send(f"Added {role} to {user.mention}")
-
 
     @addRole.error
     async def role_error(self, ctx, error):
