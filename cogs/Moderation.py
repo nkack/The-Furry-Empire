@@ -4,11 +4,11 @@ from nextcord import Member
 from nextcord.ext.commands import has_permissions, MissingPermissions
 from nextcord.utils import get
 
-
 class Moderation(commands.Cog):
 
     def __init__(self, client):
         self.client = client
+        self.logchannel = client.get_channel(1175901104786133162)
 
     @commands.command()
     @commands.has_permissions(kick_members=True)
@@ -74,6 +74,15 @@ class Moderation(commands.Cog):
     async def on_command_error(ctx, error):
         if isinstance(error, commands.MissingPermissions):
             ctx.send("You don't have permission to run this command")
+
+
+    @commands.Cog.listener()
+    async def on_message_delete(self, message):
+        embed = nextcord.Embed(color=nextcord.Color.from_rgb(255, 0, 0))
+        embed.set_author(name=message.author.name, icon_url=message.author.avatar)
+        embed.add_field(name='', value=f'Message deleted in {message.channel.mention}\n', inline=False)
+        embed.add_field(name='Content', value=message.content, inline=False)
+        await self.logchannel.send(embed=embed)
 
 
 def setup(client):
