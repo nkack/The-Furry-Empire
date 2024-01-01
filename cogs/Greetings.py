@@ -52,5 +52,5 @@ class Greetings(commands.Cog):
 
     
 
-async def setup(client):
-    await client.add_cog(Greetings(client))
+def setup(client):
+    client.add_cog(Greetings(client))

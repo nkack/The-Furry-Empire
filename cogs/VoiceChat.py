@@ -94,5 +94,5 @@ class VoiceChat(commands.Cog):
         await ctx.send("Added to queue!")
 
 
-async def setup(client):
-    await client.add_cog(VoiceChat(client))
+def setup(client):
+    client.add_cog(VoiceChat(client))

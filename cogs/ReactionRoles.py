@@ -12,5 +12,5 @@ class ReactionRoles(commands.Cog):
         return
     
 
-async def setup(client):
-    await client.add_cog(ReactionRoles(client))
+def setup(client):
+    client.add_cog(ReactionRoles(client))

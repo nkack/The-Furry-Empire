@@ -76,5 +76,5 @@ class Moderation(commands.Cog):
             ctx.send("You don't have permission to run this command")
 
 
-async def setup(client):
-    await client.add_cog(Moderation(client))
+def setup(client):
+    client.add_cog(Moderation(client))
