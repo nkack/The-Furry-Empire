@@ -1,8 +1,11 @@
 import nextcord
 from nextcord.ext import commands
 from nextcord import Interaction
+import os
 
-testServerId = 1079386114328105011
+os.load_dotenv('.env')
+testServerId: int = os.getenv('TEST_SERVER')
+
 
 class ReactionRoles(commands.Cog):
 

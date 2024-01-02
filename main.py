@@ -1,12 +1,15 @@
 import nextcord
 from nextcord.ext import commands
 from nextcord import Interaction
+from dotenv import load_dotenv
 import os
 
-from apikeys import *
-from Channels import *
+# Loading Channel Ids and Bot Token
+load_dotenv('.env')
+bot_token: str = os.getenv('BOT_TOKEN')
+welcome_channel: int = os.getenv('WELCOME_CHANNEL')
+log_channel: int = os.getenv('LOG_CHANNEL')
 
-testServerId = 1079386114328105011
 
 intents = nextcord.Intents.all()
 client = commands.Bot(command_prefix = '!', intents=intents)
@@ -32,4 +35,4 @@ async def on_ready():
 
 
 
-client.run(BOTTOKEN)
+client.run(bot_token)
