@@ -6,6 +6,7 @@ import os
 from apikeys import *
 from Channels import *
 
+testServerId = 1079386114328105011
 
 intents = nextcord.Intents.all()
 client = commands.Bot(command_prefix = '!', intents=intents)
