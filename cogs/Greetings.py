@@ -1,5 +1,6 @@
 import nextcord
 from nextcord.ext import commands
+from nextcord import Interaction
 
 class Greetings(commands.Cog):
 
@@ -8,14 +9,11 @@ class Greetings(commands.Cog):
 
         self.WELCOMECHANNEL = 1176836289962725376
 
-    @commands.command()
-    async def hello(self, ctx):
-        await ctx.send("Hello, I am your bot!")
+    testServerId = 1079386114328105011
 
-
-    @commands.command()
-    async def goodbye(self, ctx):
-        await ctx.send("Byeee")
+    @nextcord.slash_command(name="greeting", description="A greeting from the bot", guild_ids=[testServerId])
+    async def greet(self, interaction: Interaction):
+        await interaction.response.send_message("Hello! Your interaction worked!")
 
 
     @commands.Cog.listener()
@@ -47,6 +45,8 @@ class Greetings(commands.Cog):
             else:
                 pass
         await self.client.process_commands(message)
+
+    
         
 
 

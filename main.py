@@ -1,5 +1,6 @@
 import nextcord
 from nextcord.ext import commands
+from nextcord import Interaction
 import os
 
 from apikeys import *
@@ -27,7 +28,6 @@ async def on_ready():
 
     print("The bot is now ready for use!")
     print("------------------------------------")
-
 
 
 

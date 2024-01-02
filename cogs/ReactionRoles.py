@@ -1,5 +1,8 @@
 import nextcord
 from nextcord.ext import commands
+from nextcord import Interaction
+
+testServerId = 1079386114328105011
 
 class ReactionRoles(commands.Cog):
 

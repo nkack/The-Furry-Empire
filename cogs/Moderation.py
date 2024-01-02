@@ -1,8 +1,10 @@
 import nextcord
 from nextcord.ext import commands
-from nextcord import Member
+from nextcord import Member, Interaction
 from nextcord.ext.commands import has_permissions, MissingPermissions
 from nextcord.utils import get
+
+testServerId = 1079386114328105011
 
 class Moderation(commands.Cog):
 
