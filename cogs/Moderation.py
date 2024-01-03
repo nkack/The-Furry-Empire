@@ -3,9 +3,10 @@ from nextcord.ext import commands
 from nextcord import Member, Interaction
 from nextcord.ext.commands import has_permissions, MissingPermissions
 from nextcord.utils import get
+from dotenv import load_dotenv
 import os
 
-os.load_dotenv('.env')
+load_dotenv('.env')
 testServerId: int = os.getenv('TEST_SERVER')
 
 class Moderation(commands.Cog):

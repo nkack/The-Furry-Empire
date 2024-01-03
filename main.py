@@ -14,7 +14,7 @@ log_channel: int = os.getenv('LOG_CHANNEL')
 intents = nextcord.Intents.all()
 client = commands.Bot(command_prefix = '!', intents=intents)
 
-async def load_cogs(client):
+def load_cogs(client):
     cogs = ['Greetings', 'Moderation', 'ReactionRoles', 'VoiceChat']
     for cog in cogs:
         try:
@@ -24,11 +24,19 @@ async def load_cogs(client):
             print(f'Error loading cog "{cog}": {type(e).__name__} - {e}')
 
 
+load_cogs(client)
+
+@client.event
+async def on_connect():
+    print("The bot is connected to discord")
+    client.add_all_application_commands()
+    await client.sync_application_commands()
+
+
 @client.event
 async def on_ready():
     activity = nextcord.Activity(type = nextcord.ActivityType.watching, name='Cute Furries on DC')
     await client.change_presence(status=nextcord.Status.online, activity=activity)
-    await load_cogs(client)
 
     print("The bot is now ready for use!")
     print("------------------------------------")

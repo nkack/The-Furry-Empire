@@ -1,9 +1,10 @@
 import nextcord
 from nextcord.ext import commands
 from nextcord import Interaction
+from dotenv import load_dotenv
 import os
 
-os.load_dotenv('.env')
+load_dotenv('.env')
 testServerId: int = os.getenv('TEST_SERVER')
 
 class Greetings(commands.Cog):
