@@ -16,9 +16,9 @@ class Greetings(commands.Cog):
 
     testServerId = 1079386114328105011
 
-    @nextcord.slash_command(name="greeting", description="A greeting from the bot", guild_ids=[testServerId])
-    async def greet(self, interaction: Interaction):
-        await interaction.response.send_message("Hello! Your interaction worked!")
+    @nextcord.slash_command(name="greeting", description="Greet someone using the bot!", guild_ids=[testServerId])
+    async def greet(self, interaction: Interaction, member: nextcord.Member, amount: int):
+        await interaction.response.send_message(f"{interaction.user.mention} greeted {member.mention}!")
 
 
     @commands.Cog.listener()
