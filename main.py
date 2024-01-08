@@ -12,7 +12,7 @@ log_channel: int = os.getenv('LOG_CHANNEL')
 
 
 intents = nextcord.Intents.all()
-client = commands.Bot(command_prefix = '!', intents=intents)
+client = commands.Bot(intents=intents)
 
 def load_cogs(client):
     cogs = ['Greetings', 'Moderation', 'ReactionRoles', 'VoiceChat']

@@ -3,9 +3,8 @@ from nextcord.ext import commands
 from nextcord import Interaction
 from dotenv import load_dotenv
 import os
+from stopwatch import Stopwatch
 
-load_dotenv('.env')
-testServerId: int = os.getenv('TEST_SERVER')
 
 class Greetings(commands.Cog):
 
@@ -17,7 +16,7 @@ class Greetings(commands.Cog):
     testServerId = 1079386114328105011
 
     @nextcord.slash_command(name="greeting", description="Greet someone using the bot!", guild_ids=[testServerId])
-    async def greet(self, interaction: Interaction, member: nextcord.Member, amount: int):
+    async def greet(self, interaction: Interaction, member: nextcord.Member):
         await interaction.response.send_message(f"{interaction.user.mention} greeted {member.mention}!")
 
 
@@ -34,27 +33,19 @@ class Greetings(commands.Cog):
         if message.author == self.client.user:
             return
         
-        if ("happy") in message.content:
-            emoji = '😁'
-            await message.add_reaction(emoji)
         content = message.content.lower()
         greetings = {"hello": "Hewwo cutie!",
                     "hi": "Hiiii cutie",
                     "good morning": "Morning cutie, how was your sleep?",
                     "good evening": "Evening cutie, wyd rn?",
                     "good night": "Good Night cutie, sleep tight and don't let the bedbugs bite <3"}
-        for greeting in greetings.keys():
-            if content == greeting:
-                await message.reply(greetings[greeting])
-                print(f"Answered on hi to {message.author.display_name}")
-            else:
-                pass
+        try:
+            greeting = greetings[content]
+            await message.reply(greeting)
+            print(f"Answered on hi to {message.author.display_name}")
+        except: 
+            pass
         await self.client.process_commands(message)
-
-    
-        
-
-
     
 
 def setup(client):
