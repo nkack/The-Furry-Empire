@@ -14,8 +14,9 @@ class Moderation(commands.Cog):
             }
         
     testServerId = 1079386114328105011
+    mainServerId = 1174975790136430612
 
-    @nextcord.slash_command(name="purge", description="Purge an amount of messages", guild_ids=[testServerId])
+    @nextcord.slash_command(name="purge", description="Purge an amount of messages", guild_ids=[testServerId, mainServerId])
     @application_checks.has_permissions(manage_messages = True)
     async def purge(self, interaction: Interaction, amount: int, specific_user: nextcord.Member = None):
         messages = await interaction.channel.history(limit=amount).flatten()
